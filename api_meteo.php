@@ -5,7 +5,14 @@ $city = "Paris"; // Ville souhaitée
 $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric&lang=fr";
 
 // Effectuer la requête vers l'API OpenWeather
-$response = file_get_contents($apiUrl);
+
+
+$curl = curl_init(); // initialisation du requêteur
+// setopt => set option
+curl_setopt($curl, CURLOPT_URL, $apiUrl); // ajout de l'url de l'api
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // renvoie le contenue de la page cible
+$response = curl_exec($curl); // éxécution de la requête
+curl_close($curl); // fermeture du requêteur
 
 // Vérifier si la requête a réussi
 if ($response === FALSE) {
@@ -25,9 +32,13 @@ $temperature = $weatherData['main']['temp'];
 $description = $weatherData['weather'][0]['description'];
 $cityName = $weatherData['name'];
 
-// Afficher les informations météorologiques
-echo "La météo à {$cityName} : <br>";
-echo "Température : {$temperature}°C <br>";
-echo "Description : {$description} <br>";
+$result = [
+    "name" => $cityName,
+    "temp" => $temperature,
+    "desc" => $description
+];
+
+header('Content-Type: application/json');
+echo json_encode($result);
 
 ?>
