@@ -1,11 +1,14 @@
 <?php
 // Configuration de l'API OpenWeather
 $apiKey = "c9483211cb911cbce5311029119e1de6"; //Clé OpenWeather
-$city = "Paris"; // Ville souhaitée
+
+if(!empty($_GET["city"])) { // vérifie si le paramètre city exite et est remplit
+    $city = htmlspecialchars($_GET["city"]);
+} else { // sinon on lui donne une valeur par défaut => Paris
+    $city = "Paris";
+}
+
 $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric&lang=fr";
-
-// Effectuer la requête vers l'API OpenWeather
-
 
 $curl = curl_init(); // initialisation du requêteur
 // setopt => set option
@@ -39,6 +42,6 @@ $result = [
 ];
 
 header('Content-Type: application/json');
-echo json_encode($result);
+echo json_encode($result); // encodage du tableau au format json
 
 ?>
