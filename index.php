@@ -27,7 +27,13 @@ echo $weatherData['name'];
     <body>
         <div class="container">
             <div class="d-flex justify-content-center">
-                <h1>Hello World!</h1>
+                <form method="get" action="">
+                    <p>
+                        <label for="prenom">Ville :</label>
+                        <input type="text" name="ville" id="ville" required placeholder="Ex. : Paris" size="30" maxlength="20">
+                        <input type="submit" value="Envoyer">
+                    </p>
+                </form>
             </div>
         </div>
     </body>
