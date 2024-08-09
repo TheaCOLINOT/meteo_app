@@ -15,6 +15,31 @@ curl_close($curl); // fermeture du requêteur
 
 $weatherData = json_decode($response, true); // decodage du format json au format tableau
 
+
+if (isset($weatherData["desc"])) {
+
+    if (str_contains($weatherData["desc"], 'ciel dégagé')) {
+        $logo = "image\soleil.png";
+
+    } else if (str_contains($weatherData["desc"], 'pluie')) {
+        $logo = "image\pluvieux.png";
+    } else if (str_contains($weatherData["desc"], 'nuageux')) {
+        $logo = "image\\nuageux.png";
+    } else if (str_contains($weatherData["desc"], 'nuages')) {
+        $logo = "image\\nuageux.png";
+    } else if (str_contains($weatherData["desc"], 'couvert')) {
+        $logo = "image\\nuageux.png";
+    } else if (str_contains($weatherData["desc"], 'orage')) {
+        $logo = "image\orage.png";
+    } else if (str_contains($weatherData["desc"], 'neige')) {
+        $logo = "image\\neige.png";
+    }
+
+}
+else {
+    $logo="";
+}
+
 ?>
 
 
@@ -23,6 +48,7 @@ $weatherData = json_decode($response, true); // decodage du format json au forma
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
 
     </head>
     <body>
@@ -34,8 +60,12 @@ $weatherData = json_decode($response, true); // decodage du format json au forma
                 <div class="d-flex justify-content-center">
                     <form method="get" action="" class="p-4 bg-light border rounded">
                         <label for="city" class="form-label" >Ville :</label>
-                        <input type="text" name="city" id="city" required placeholder="Ex. : Paris" size="30" maxlength="20" class="form-control">
-                        <input type="submit" value="Envoyer" class="btn btn-primary w-100">
+                        <div class="mb-3">
+                        <input type="text" name="city" id="city" required placeholder="Ex. : Paris" size="30" maxlength="100" class="form-control mb-3" >
+                            <div class="mb-3">
+                            <input type="submit" value="Envoyer" class="btn btn-primary w-100 mb-3">
+                            <div class="mb-3">
+                                <img class="img1" src="<?= $logo ?>">
                     </form>
                 </div>
                 <div>
@@ -45,8 +75,8 @@ $weatherData = json_decode($response, true); // decodage du format json au forma
                 </div>
             </div>
         </main>
-        <footer>
-
+        <footer class="d-flex justify-content-center align-items-center">
+            <a class="link-opacity-50-hover" href="https://openweathermap.org/" > Open Weather </a>
         </footer>
     </body>
 </html>
