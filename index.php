@@ -49,11 +49,17 @@ else {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     </head>
     <body>
-        <header class="d-flex justify-content-center">
-            <h1>Météo</h1>
+        <header class="d-flex justify-content-center ">
+            <h1 class="justify-content-center align-items-center">Météo</h1>
         </header>
         <main>
             <div class="w-100 mt-5 justify-content-center">
@@ -64,14 +70,17 @@ else {
                         <input type="text" name="city" id="city" required placeholder="Ex. : Paris" size="30" maxlength="100" class="form-control mb-3" >
                             <div class="mb-3">
                             <input type="submit" value="Envoyer" class="btn btn-primary w-100 mb-3">
-                            <div class="mb-3">
-                                <img class="img1" src="<?= $logo ?>">
+
                     </form>
-                </div>
+                <div class="d-flex justify-content-around w-100">
                 <div>
                     <p><?= isset($weatherData["name"]) ? $weatherData["name"] : "City not found" ?></p>
                     <p><?= isset($weatherData["temp"]) ? $weatherData["temp"] : "" ?></p>
                     <p><?= isset($weatherData["desc"]) ? $weatherData["desc"] : "" ?></p>
+                </div>
+
+                        <img class="img1" src="<?= $logo ?>">
+
                 </div>
             </div>
         </main>
