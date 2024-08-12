@@ -2,9 +2,9 @@
 
 
 if(!empty($_GET["city"])) { // vérifie si le paramètre city existe et est remplit
-    $apiUrl = "http://localhost/meteo_app/api_meteo.php?city={$_GET['city']}"; // on appelle l'api avec le paramètre city
+    $apiUrl = "http://localhost/meteo_app/v_php/api_meteo.php?city={$_GET['city']}"; // on appelle l'api avec le paramètre city
 } else { // sinon on appel simplement la page api sans paramètre
-    $apiUrl = "http://localhost/meteo_app/api_meteo.php";
+    $apiUrl = "http://localhost/meteo_app/v_php/api_meteo.php";
 }
 
 $curl = curl_init(); // initialisation du requêteur
