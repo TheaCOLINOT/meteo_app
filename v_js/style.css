@@ -4,6 +4,13 @@ footer {
     background-color: #0d6efd !important;
     width: 100vw;
     height: 100px;
+    margin-top: 100px; /* Ajuste la valeur selon l'espace souhaité */
+}
+
+header {
+    background-color: #0d6efd;
+    width: 100vw;
+    height: 100px;
 }
 
 input {
@@ -19,5 +26,39 @@ input {
 }
 
 .img1 {
+    max-width: 25%;
+    max-height: 400px;
 
+
+}
+
+p {
+    font-family: "M3 PLUS Rounded 1c", sans-serif;
+    font-weight: bold;
+
+}
+
+h1 {
+    font-family: "Quantico", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    position: relative;
+    top: 20%; /* Déplace le titre vers le bas de 20% par rapport à sa position normale */
+
+}
+
+.form-label {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: bold;
+    width: 50vw;
+    height: 50px;
+}
+
+div#main {
+    width: 30vw;
+}
+
+p::first-letter {
+    text-transform: capitalize;
 }
