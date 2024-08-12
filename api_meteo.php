@@ -35,11 +35,13 @@ $temperature = $weatherData['main']['temp'];
 $description = $weatherData['weather'][0]['description'];
 $cityName = $weatherData['name'];
 
+//renvoi le résultat adapté à la ville envoyer par l'utilisateur
 $result = [
     "name" => $cityName,
     "temp" => $temperature,
     "desc" => $description
 ];
+
 
 header('Content-Type: application/json');
 echo json_encode($result); // encodage du tableau au format json

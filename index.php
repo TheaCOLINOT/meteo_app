@@ -34,7 +34,7 @@ if (isset($weatherData["desc"])) {
     } else if (str_contains($weatherData["desc"], 'neige')) {
         $logo = "image\\neige.png";
     }
-
+    //renvoi image correspondant à la météo actuelle de la ville séléctionnée, si pluie, affiche une illustration de la pluie
 }
 else {
     $logo="";
@@ -58,7 +58,7 @@ else {
 
     </head>
     <body>
-        <header class="d-flex justify-content-center ">
+        <header class="d-flex justify-content-center p-3">
             <h1 class="justify-content-center align-items-center">Météo</h1>
         </header>
         <main>
@@ -72,12 +72,14 @@ else {
                             <input type="submit" value="Envoyer" class="btn btn-primary w-100 mb-3">
 
                     </form>
+
                 <div class="d-flex justify-content-around w-100">
                 <div>
                     <p><?= isset($weatherData["name"]) ? $weatherData["name"] : "City not found" ?></p>
-                    <p><?= isset($weatherData["temp"]) ? $weatherData["temp"] : "" ?></p>
-                    <p><?= isset($weatherData["desc"]) ? $weatherData["desc"] : "" ?></p>
+                    <p><?= isset($weatherData["temp"]) ? round($weatherData["temp"],1) : "" ?> °C</p>
+                    <p><?= isset($weatherData["desc"]) ? ucfirst($weatherData["desc"]) : "" ?></p>
                 </div>
+                    <!--affichage température, descritpion, nom de la ville-->
 
                         <img class="img1" src="<?= $logo ?>">
 
@@ -85,7 +87,7 @@ else {
             </div>
         </main>
         <footer class="d-flex justify-content-center align-items-center">
-            <a class="link-opacity-50-hover" href="https://openweathermap.org/" > Open Weather </a>
-        </footer>
+            <a class="link-opacity-50-hover" href="https://openweathermap.org/"> Open Weather </a>
+        </footer> <!--lien vers OpenWeather-->
     </body>
 </html>
